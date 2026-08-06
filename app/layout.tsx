@@ -1,6 +1,9 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Mono, Inter, Space_Grotesk } from 'next/font/google'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import ScrollEffects from '@/components/ScrollEffects'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
@@ -14,7 +17,6 @@ export const metadata: Metadata = {
     template: '%s | The Base Trading',
   },
   description: 'USA-based international trading company sourcing earth-moving machinery, industrial equipment, electrical systems, generators and mechanical solutions worldwide.',
-  alternates: { canonical: '/' },
   icons: {
     icon: '/icon.png',
     apple: '/apple-icon.png',
@@ -37,7 +39,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${grotesk.variable} ${inter.variable} ${plexMono.variable}`}>
-      <body>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+        <ScrollEffects />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
+      </body>
     </html>
   )
 }
