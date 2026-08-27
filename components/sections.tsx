@@ -21,7 +21,6 @@ export function Hero() {
     <section className="hero on-dark" id="home">
       <div className="container hero-grid">
         <div>
-          <Kicker index="EST. USA" dark>Company Presentation · 2026</Kicker>
           <h1>Global Trading &amp; Industrial Supply Solutions <em>You Can Trust</em></h1>
           <p className="lead">Outsourcing and delivering premium Earth-Moving Machinery, Industrial Equipment, Electrical Systems, all types of Generators, and Mechanical Solutions to serve industries worldwide.</p>
           <div className="hero-ctas">
@@ -36,11 +35,7 @@ export function Hero() {
           <div className="frame">
             <img src={images.hero} alt="Heavy earth-moving machinery on an industrial yard at dawn" fetchPriority="high" />
           </div>
-          <div className="plate">
-            <small>Representative Inventory</small>
-            <strong>Diesel Generator Set</strong>
-            <span>Standby Power · Diesel · LIKE NEW</span>
-          </div>
+         
         </div>
       </div>
     </section>

@@ -31,7 +31,7 @@ export default function Footer() {
       <div className="container">
         <div className="f-top">
           <div className="f-brand">
-            <Brand />
+            <Brand showSubtitle={false} />
             <p>Global Trading &amp; Industrial Supply Solutions You Can Trust. USA-based international sourcing, procurement and worldwide shipment.</p>
             <span>
               {ADDRESS}

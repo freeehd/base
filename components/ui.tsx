@@ -9,8 +9,8 @@ export function LinkButton({ children, ghost = false, href = '/contact' }: { chi
   return <a className={`btn ${ghost ? 'btn-ghost' : ''}`} href={href}>{children}</a>
 }
 
-export function Brand() {
-  return <a className="brand" href="/" aria-label="The Base Trading home"><img src="/logo.png" alt="The Base Trading" className="brand-logo" /><span><strong>THE BASE TRADING</strong><small>Global Trading &amp; Industrial Solutions</small></span></a>
+export function Brand({ showSubtitle = true }: { showSubtitle?: boolean }) {
+  return <a className="brand" href="/" aria-label="The Base Trading home"><img src="/logo.png" alt="The Base Trading" className="brand-logo" />{showSubtitle && <small>Global Trading &amp; Industrial Solutions</small>}</a>
 }
 
 export function CheckList({ items }: { items: string[] }) {

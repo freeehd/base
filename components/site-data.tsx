@@ -23,16 +23,14 @@ export const navItems = [
   { label: 'Contact', href: '/contact' },
 ]
 
-export const PHONE_DISPLAY = '+1 (657) 289-4747'
-export const PHONE_HREF = 'tel:+16572894747'
-export const EMAIL = 'info@thebasetrading.com'
+export const PHONE_DISPLAY = '+1 (516) 395-9535'
+export const PHONE_HREF = 'tel:+15163959535'
+export const EMAIL = 'contact@thebasetrading.com'
 export const WEB = 'www.thebasetrading.com'
 export const WEB_HREF = 'https://www.thebasetrading.com'
 export const ADDRESS = (
   <>
-    1801 E. Katella Ave, Suite 500
-    <br />
-    Anaheim, CA 92805, USA
+    Hicksville, New York 11801, USA
   </>
 )
 
@@ -172,7 +170,7 @@ export const processStepsDetailed: [string, string][] = [
 ]
 
 export const aboutStats: [string, string][] = [
-  ['USA-Based', 'Head office in Anaheim, California'],
+  ['USA-Based', 'Head office in Hicksville, New York'],
   ['Global Network', 'Verified suppliers worldwide'],
   ['End-to-End', 'Sourcing through to delivery'],
   ['Dedicated Support', 'One team from quote to handover'],

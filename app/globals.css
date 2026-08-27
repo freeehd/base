@@ -280,29 +280,26 @@ header.scrolled {
 
 .brand {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
   color: var(--txt);
 }
 
 .brand-logo {
-  height: 32px;
+  height: 28px;
   width: auto;
   object-fit: contain;
 }
 
-.brand strong {
-  display: block;
-  font-size: 1rem;
-  letter-spacing: .06em;
-}
-
 .brand small {
   display: block;
-  color: var(--mut);
-  font: 500 10px var(--font-mono);
-  letter-spacing: .25em;
+  color: #f59e0b;
+  font: 500 10.5px var(--font-mono);
+  letter-spacing: .22em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .main-nav ul {
@@ -1581,6 +1578,10 @@ footer {
 
 .f-top a:hover {
   color: var(--amber);
+}
+
+.f-brand .brand small {
+  display: none !important;
 }
 
 .f-brand p {
