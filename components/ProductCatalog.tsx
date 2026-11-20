@@ -27,13 +27,18 @@ export default function ProductCatalog() {
       <div className="cat-grid" aria-live="polite">
         {visible.map((card) => (
           <article className="cat-card" key={card.title}>
-            <div className={`c-media ${card.image ? '' : 'catalog-media-text'}`}>
+            <div className="c-media catalog-media">
               <span>{card.tag}</span>
-              {card.image ? (
-                <img src={card.image} alt="" loading="lazy" decoding="async" />
-              ) : (
-                <strong aria-hidden="true">{card.title}</strong>
-              )}
+              <strong aria-hidden="true" className="catalog-media__fallback">{card.title}</strong>
+              <img
+                src={card.image}
+                alt=""
+                width={1200}
+                height={750}
+                loading="lazy"
+                decoding="async"
+                onError={(event) => { event.currentTarget.style.display = 'none' }}
+              />
             </div>
             <div className="c-body">
               <h3>{card.title}</h3>
