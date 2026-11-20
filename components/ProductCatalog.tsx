@@ -29,7 +29,6 @@ export default function ProductCatalog() {
           <article className="cat-card" key={card.title}>
             <div className="c-media catalog-media">
               <span>{card.tag}</span>
-              <strong aria-hidden="true" className="catalog-media__fallback">{card.title}</strong>
               <img
                 src={card.image}
                 alt=""

@@ -2636,3 +2636,28 @@ a:focus-visible, button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .marketplace-card__media img { transition: none; }
 }
+
+/* Product-card image layering fix: remove duplicated fallback headings. */
+.cat-card .catalog-media {
+  position: relative;
+  display: block;
+  height: 220px;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cat-card .catalog-media > img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+}
+.cat-card .catalog-media > span {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+}
