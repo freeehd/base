@@ -21,23 +21,66 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
 export function Hero() {
   return (
     <section className="hero on-dark" id="home">
-      <div className="container hero-grid">
-        <div>
-          <h1>One trusted partner for <em>machinery, power, instruments and everyday goods</em></h1>
-          <p className="lead">We source and supply new and used earth-moving machinery, industrial equipment, commercial generators and test and measurement equipment. We also sell household items and dry pet food in bulk and through Amazon, Walmart, eBay and TikTok Shop.</p>
+      <div className="container hero-grid hero-grid--diversified">
+        <div className="hero-copy">
+          <p className="hero-eyebrow">USA-Based · Sourcing Worldwide · Online Retail</p>
+          <h1>Machinery. Everyday goods. <em>Marketplace sales.</em></h1>
+          <p className="lead">
+            Base Trading sources new and used machinery, industrial equipment, commercial
+            generators and test instruments. We also supply household essentials and dry
+            pet food in bulk, and sell brands through major online marketplaces.
+          </p>
           <div className="hero-ctas">
-            <LinkButton>Request a Quote <ArrowRight size={15} /></LinkButton>
-            <LinkButton ghost href="/products">Browse Categories</LinkButton>
+            <LinkButton>Request a Quote <ArrowRight size={15} aria-hidden="true" /></LinkButton>
+            <LinkButton ghost href="/products">Explore Our Products</LinkButton>
           </div>
-          <ul className="hero-chips">
-            {['Earth-moving machinery', 'Industrial machines', 'Commercial generators', 'Test instruments', 'Household goods', 'Dry pet food'].map((item) => <li key={item}>+ {item}</li>)}
-          </ul>
+          <p className="hero-secondary-link">
+            <ArrowLink href="/online-stores">Online Stores &amp; Brand Partnerships</ArrowLink>
+          </p>
         </div>
-        <div className="hero-visual">
-          <div className="frame">
-            <img src={images.hero} alt="Heavy earth-moving machinery at an industrial yard" fetchPriority="high" />
+        <aside className="hero-business-board" aria-labelledby="hero-business-title">
+          <div className="hero-business-board__header">
+            <h2 id="hero-business-title">Three sides of Base Trading</h2>
+            <span>01 — 03</span>
           </div>
-        </div>
+          <a className="hero-business-board__row" href="/products">
+            <div className="hero-business-board__media">
+              <img src={images.industrial} alt="" fetchPriority="high" />
+            </div>
+            <div className="hero-business-board__details">
+              <span>01 / Industrial Supply</span>
+              <h3>Machinery, Power &amp; Instruments</h3>
+              <p>Equipment, generators, test tools and spare parts.</p>
+            </div>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a className="hero-business-board__row" href="/products">
+            <div className="hero-business-board__symbol" aria-hidden="true">
+              <PackageCheck size={26} strokeWidth={1.6} />
+            </div>
+            <div className="hero-business-board__details">
+              <span>02 / Wholesale &amp; Retail</span>
+              <h3>Everyday Goods</h3>
+              <p>Household essentials and shelf-stable dry pet food.</p>
+            </div>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a className="hero-business-board__row" href="/online-stores">
+            <div className="hero-business-board__symbol" aria-hidden="true">
+              <Store size={26} strokeWidth={1.6} />
+            </div>
+            <div className="hero-business-board__details">
+              <span>03 / E-Commerce</span>
+              <h3>Marketplaces &amp; Brand Sales</h3>
+              <p>Amazon, Walmart, eBay and TikTok Shop.</p>
+            </div>
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <div className="hero-business-board__footer">
+            <Globe2 size={15} aria-hidden="true" />
+            One team · Sourcing to delivery
+          </div>
+        </aside>
       </div>
     </section>
   )
