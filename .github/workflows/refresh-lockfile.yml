@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: '22'
       - name: Regenerate dependency lockfile
-        run: npm install --package-lock-only --ignore-scripts
+        run: |
+          npm install --package-lock-only --ignore-scripts
+          npm audit fix --package-lock-only --ignore-scripts
       - name: Verify install
         run: npm ci
-      - name: Audit production dependencies
-        run: npm audit --omit=dev --audit-level=high
       - name: Build site
         run: npm run build
       - name: Commit regenerated lockfile
@@ -37,3 +37,5 @@ jobs:
             git commit -m "Regenerate npm lockfile with patched dependencies"
             git push
           fi
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high

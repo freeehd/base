@@ -62,3 +62,5 @@ To retry the Turbopack production build once the underlying worker issue is reso
 - **Important hosting action:** Enable Vercel Firewall managed rules and rate limiting/challenges for abnormal request volume and bot attacks in the Vercel dashboard. Application-level checks cannot provide distributed rate limiting or DDoS defense.
 - The GitHub security workflow audits production dependencies and builds on PRs and weekly; Dependabot opens upgrade PRs.
 - Do not treat a successful npm audit as proof that all security issues are eliminated. Review transitive and development dependency advisories and rerun a complete `npm audit`.
+
+The `shadcn` code-generation CLI is not needed to serve the site and has been removed from runtime dependencies to reduce transitive vulnerability exposure.
