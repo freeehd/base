@@ -54,10 +54,10 @@ To retry the Turbopack production build once the underlying worker issue is reso
 
 ## Security and bot traffic
 
-- Production uses Next.js 16.4.6 and npm overrides for `proxy-addr >=2.0.8` and `systeminformation >=5.33.16`. The lockfile must be regenerated with `npm install --package-lock-only` and committed before deploying.
+- Production uses Next.js 16.4.6 and npm overrides for `proxy-addr >=2.0.8` and `systeminformation >=5.33.16`. The npm lockfile has been regenerated and committed by the security update workflow.
 - `next.config.mjs` applies browser-facing security headers.
 - `proxy.ts` rejects common scanner probes such as `/.env`, `/.git`, `/wp-login.php` and `/xmlrpc.php` without inspecting or blocking normal visitors or legitimate search engine crawlers.
-- `robots.txt` disallows indexing internal API and framework paths. Robots directives are voluntary and **not** a security boundary.
+- `robots.txt` disallows indexing internal API paths. Robots directives are voluntary and **not** a security boundary.
 - The existing quote form opens the visitor's email app, so there is currently no public form-submission endpoint to rate-limit.
 - **Important hosting action:** Enable Vercel Firewall managed rules and rate limiting/challenges for abnormal request volume and bot attacks in the Vercel dashboard. Application-level checks cannot provide distributed rate limiting or DDoS defense.
 - The GitHub security workflow audits production dependencies and builds on PRs and weekly; Dependabot opens upgrade PRs.
