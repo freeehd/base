@@ -16,10 +16,10 @@ export const images = {
 
 export const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
   { label: 'Products', href: '/products' },
-    { label: 'About Us', href: '/about' },
-
+  { label: 'Online Stores', href: '/online-stores' },
+  { label: 'Services', href: '/services' },
+  { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -35,22 +35,36 @@ export const ADDRESS = (
 )
 
 export const categories = [
-  { tag: 'Heavy Construction', title: 'Heavy Construction Equipment', image: images.construction, items: ['Excavators', 'Bulldozers', 'Wheel Loaders', 'Cranes', 'Motor Graders', 'Dump Trucks'], note: 'From leading global manufacturers' },
-  { tag: 'Industrial', title: 'Industrial Equipment', image: images.industrial, items: ['All Types of Radiators', 'Mechanical Equipment', 'Industrial Tools', 'Generators', 'All Types of Generators', 'Electrical Equipments'], note: 'Built for performance & durability' },
-  { tag: 'Spare Parts', title: 'Spare Parts', image: images.parts, items: ['Hydraulic Attachments', 'Undercarriage Parts', 'Engine Components', 'Wear Parts & Filters'], note: 'Genuine & OEM-equivalent parts' },
+  { group: 'equip', tag: 'New and used', title: 'Earth-moving machinery', quoteCategory: 'Earth-moving machinery', image: images.construction,
+    items: ['Excavators', 'Bulldozers', 'Wheel loaders', 'Backhoe loaders', 'Motor graders', 'Cranes', 'Dump trucks', 'Compactors', 'Skid steers'],
+    note: 'Condition details supplied for used machinery' },
+  { group: 'equip', tag: 'Plant and workshop', title: 'Industrial machines', quoteCategory: 'Industrial machines', image: images.industrial,
+    items: ['Machine tools', 'Processing machinery', 'Compressors', 'Pumps', 'Radiators & cooling systems', 'Industrial tools', 'Electrical equipment'],
+    note: 'Industrial plant and workshop supply' },
+  { group: 'equip', tag: 'New and used', title: 'Commercial generators', quoteCategory: 'Commercial generators', image: images.genset,
+    items: ['Diesel generator sets', 'Gas generator sets', 'Standby units', 'Prime-duty units', 'Alternators', 'Complete power packages'],
+    note: 'Standby and prime power' },
+  { group: 'equip', tag: 'Instruments', title: 'Test and measurement equipment', quoteCategory: 'Test and measurement equipment', image: null,
+    items: ['Multimeters', 'Oscilloscopes', 'Power analyzers', 'Calibration tools', 'Insulation & earth testers', 'Thermal & flow instruments'],
+    note: 'Lab and field instruments' },
+  { group: 'equip', tag: 'Parts', title: 'Spare parts and attachments', quoteCategory: 'Spare parts and attachments', image: images.parts,
+    items: ['Hydraulic attachments', 'Undercarriage parts', 'Engine components', 'Filters', 'Wear parts', 'Genuine & OEM-equivalent parts'],
+    note: 'Equipment maintenance and replacement' },
+  { group: 'goods', tag: 'Wholesale and online', title: 'Household and daily-use items', quoteCategory: 'Household items', image: null,
+    items: ['Kitchen & home essentials', 'Cleaning supplies', 'Storage', 'Personal care', 'General merchandise'],
+    note: 'Wholesale and online sales' },
+  { group: 'goods', tag: 'Wholesale and online', title: 'Dry pet food', quoteCategory: 'Dry pet food', image: null,
+    items: ['Dry kibble for dogs', 'Shelf-stable dry dog food', 'Dry kibble for cats', 'Shelf-stable dry cat food'],
+    note: 'Dry products only · No refrigeration or temperature-controlled storage' },
 ]
 
 export const industries = [
-  { title: 'Construction', desc: 'Earth-moving machinery, excavators, loaders, cranes & site equipment', icon: 'HardHat' },
-  { title: 'Manufacturing', desc: 'Industrial machinery, tools, radiators, mechanical systems & spare parts', icon: 'Factory' },
-  { title: 'Energy & Utilities', desc: 'Standby & continuous power generation, gensets, alternators & power units', icon: 'Zap' },
-  { title: 'Oil & Gas', desc: 'Heavy-duty power packages, prime engines, pumps & offshore power systems', icon: 'Flame' },
-  { title: 'Agriculture', desc: 'Industrial engines, power units, generators & heavy utility equipment', icon: 'Tractor' },
-  { title: 'Mining', desc: 'Heavy earth-movers, high-horsepower engines, haulers & cooling systems', icon: 'Mountain' },
-  { title: 'Commercial Facilities', desc: 'Facility emergency standby power, electrical equipment & HVAC solutions', icon: 'Building2' },
-  { title: 'Government & Municipal', desc: 'Municipal utility equipment, emergency backup power & infrastructure supply', icon: 'Landmark' },
-  { title: 'Wholesale & Retail', desc: 'Bulk machinery distribution, OEM equipment & international trade supply', icon: 'Store' },
-  { title: "Int'l Trading & Logistics", desc: 'Cross-border equipment sourcing, import/export logistics & supply chain', icon: 'Globe2' },
+  { title: 'Construction and infrastructure', desc: 'Earth-movers, cranes, generators and site equipment.', icon: 'HardHat' },
+  { title: 'Manufacturing', desc: 'Industrial machines, tools, cooling systems and spare parts.', icon: 'Factory' },
+  { title: 'Energy and utilities', desc: 'Standby and continuous power, plus test instruments.', icon: 'Zap' },
+  { title: 'Oil, gas and mining', desc: 'Heavy-duty machinery, power packages and haulers.', icon: 'Flame' },
+  { title: 'Labs, telecom and engineering', desc: 'Test, calibration and measurement equipment.', icon: 'Globe2' },
+  { title: 'Retail, wholesale and e-commerce', desc: 'Household goods and dry pet food for stores, importers and online sellers.', icon: 'Store' },
 ]
 
 export const inventory = [
@@ -82,82 +96,68 @@ export const stockTabs: [string, string][] = [
 ]
 
 export const servicesList: [string, string, string][] = [
-  ['Global Product Sourcing', 'Connecting businesses with trusted manufacturers worldwide', 'Globe2'],
-  ['Import & Export', 'Reliable international shipping and documentation support', 'Ship'],
-  ['Industrial Procurement', 'End-to-end procurement management for industrial projects', 'PackageCheck'],
-  ['OEM & Private Label', 'Custom branding and manufacturing solutions tailored to your business', 'Star'],
-  ['Supply Chain Solutions', 'Efficient logistics and inventory management worldwide', 'Truck'],
+  ['Global product sourcing', 'Verified manufacturers and suppliers worldwide for single units or bulk orders', 'Globe2'],
+  ['New and used equipment supply', 'Machinery with condition details shared before commitment', 'Check'],
+  ['Import and export support', 'Documentation, shipping coordination and delivery', 'Ship'],
+  ['Wholesale and bulk supply', 'Household goods and dry pet food for retailers and distributors', 'PackageCheck'],
+  ['Online marketplace selling', 'Amazon, Walmart, eBay and TikTok Shop', 'Store'],
+  ['Brand partnership', 'Represent and sell your brand through major online marketplaces', 'Star'],
+  ['OEM and private label', 'Custom sourcing and branding for selected product lines', 'Star'],
+  ['Industrial procurement', 'End-to-end procurement for industrial projects', 'PackageCheck'],
+  ['Supply chain solutions', 'Logistics and inventory coordination', 'Truck'],
 ]
 
 export const trustItems: [string, string, string][] = [
-  ['Trust & Reliability', 'Reliable products and services you can count on', 'ShieldCheck'],
-  ['Quality Assurance', 'Only high-quality products from trusted makers', 'Check'],
-  ['Strong Partnerships', 'Long-term relationships with industry leaders', 'Globe2'],
-  ['Customer Focus', 'Your success is our top priority in everything', 'CircleDot'],
+  ['New and used', 'Options for every budget', 'Check'],
+  ['Verified sourcing', 'Suppliers checked before quoting', 'ShieldCheck'],
+  ['4 marketplaces', 'Amazon, Walmart, eBay, TikTok Shop', 'Store'],
+  ['Worldwide shipping', 'Paperwork and delivery handled', 'Globe2'],
 ]
 
 export const whyItems: [string, string, string][] = [
-  ['A1', 'Global Supplier Network', 'Access to trusted manufacturers worldwide'],
-  ['A2', 'International Quality Standards', 'Products meeting global quality benchmarks'],
-  ['A3', 'Competitive Wholesale Pricing', 'Best value with transparent pricing'],
-  ['A4', 'Worldwide Logistics', 'Efficient global shipping and supply chains'],
-  ['B1', 'Reliable Customer Support', 'Dedicated support team at every step'],
-  ['B2', 'Trusted Manufacturing Partners', 'Strong ties with leading manufacturers'],
-  ['B3', 'Customized Procurement', 'Tailored solutions for unique business needs'],
-  ['B4', 'Fast Delivery', 'Timely delivery to keep projects on track'],
+  ['A1', 'New and used options', 'Equipment options for different project budgets'],
+  ['A2', 'Supplier verification', 'Suppliers checked before quotation'],
+  ['A3', 'Single units or bulk orders', 'Support for individual units and container-size requirements'],
+  ['A4', 'Worldwide delivery', 'Documentation, shipping coordination and delivery'],
+  ['B1', 'Industrial equipment sourcing', 'Machinery, generators, spare parts and test instruments'],
+  ['B2', 'Wholesale goods', 'Household essentials and shelf-stable dry pet food'],
+  ['B3', 'Online marketplace sales', 'Amazon, Walmart, eBay and TikTok Shop'],
+  ['B4', 'One team and process', 'From sourcing and quotation to order handling'],
 ]
 
 export const valuesList: [string, string, string][] = [
-  ['Quality', 'Premium quality in every product', 'Star'],
-  ['Reliability', 'Consistent & dependable service', 'CircleDot'],
-  ['Integrity', 'Transparent business practices', 'ShieldCheck'],
-  ['Growth', 'Helping your business grow', 'Zap'],
+  ['Verified sourcing', 'Suppliers checked before quoting', 'ShieldCheck'],
+  ['Condition transparency', 'Used equipment quoted with condition details', 'Check'],
+  ['Worldwide delivery', 'Documentation and shipment coordination', 'Globe2'],
+  ['Marketplace operations', 'Listings, fulfillment and customer returns support', 'Store'],
 ]
 
 export const logiPoints: [string, string, string][] = [
-  ['Global Supplier Network', 'Access to trusted manufacturers worldwide', 'Globe2'],
-  ['Import & Export Documentation', 'Reliable international shipping and documentation support', 'PackageCheck'],
-  ['Efficient Logistics & Inventory Management', 'Supply chain solutions that keep projects on track', 'Truck'],
-  ['Fast Delivery', 'Timely delivery to keep projects on track', 'Zap'],
+  ['Worldwide sourcing', 'Verified manufacturers and suppliers worldwide', 'Globe2'],
+  ['Import and export support', 'Documentation and international shipping coordination', 'PackageCheck'],
+  ['Bulk orders', 'Procurement for single units, bulk and container-size orders', 'Truck'],
+  ['Delivery coordination', 'From quotation and approval to worldwide delivery', 'Ship'],
 ]
 
 export const servicesTeaser: [string, string, string][] = [
-  ['Global Product Sourcing', 'Verified manufacturers worldwide — single units to bulk orders', 'Globe2'],
-  ['Industrial Procurement', 'End-to-end procurement management for industrial projects', 'PackageCheck'],
-  ['Supply Chain Solutions', 'Efficient logistics and inventory management worldwide', 'Truck'],
+  ['Global product sourcing', 'Verified manufacturers and suppliers worldwide', 'Globe2'],
+  ['New and used equipment', 'Condition details provided before commitment', 'Check'],
+  ['Import and export', 'International documentation and shipping coordination', 'Ship'],
+  ['Wholesale and bulk supply', 'Household goods and dry pet food for retail', 'PackageCheck'],
+  ['Marketplace selling', 'Amazon, Walmart, eBay and TikTok Shop', 'Store'],
+  ['Brand partnership', 'Sell your brand across major online marketplaces', 'Star'],
 ]
 
 export const servicesDetailed: { title: string; description: string; includes: string[]; icon: string }[] = [
-  {
-    title: 'Global Product Sourcing',
-    description: 'We connect you directly with trusted manufacturers and verified suppliers worldwide — from single units to bulk orders, across machinery, industrial equipment, generators and spare parts.',
-    includes: ['Verified global supplier network', 'Single units or bulk orders', 'Transparent pricing & quotations', 'Quality checks before shipping'],
-    icon: 'Globe2',
-  },
-  {
-    title: 'Import & Export',
-    description: 'Full-service international trade: documentation, customs and shipment handling so your equipment moves across borders without friction — from origin port to your site.',
-    includes: ['Import & export documentation', 'Customs & compliance handling', 'Incoterms guidance', 'Freight coordination & tracking'],
-    icon: 'Ship',
-  },
-  {
-    title: 'Industrial Procurement',
-    description: 'End-to-end procurement management for industrial projects. We manage the supplier, the specification and the schedule — from inquiry to handover, so your team can focus on operations.',
-    includes: ['Requirement analysis & spec matching', 'Supplier shortlisting & verification', 'Order management & follow-up', 'Project-scale coordination'],
-    icon: 'PackageCheck',
-  },
-  {
-    title: 'OEM & Private Label',
-    description: 'Custom branding and manufacturing solutions tailored to your business — build your own product line with our manufacturing partners, with quality and compliance controlled throughout.',
-    includes: ['Custom branding & packaging', 'Private label manufacturing', 'Quality & compliance control', 'Flexible order quantities'],
-    icon: 'Star',
-  },
-  {
-    title: 'Supply Chain Solutions',
-    description: 'Efficient logistics and inventory management worldwide, keeping your projects on track with reliable delivery timelines and a dedicated account team at every step.',
-    includes: ['Worldwide logistics coordination', 'Inventory planning support', 'Delivery timeline management', 'Dedicated account support'],
-    icon: 'Truck',
-  },
+  { title: 'Global product sourcing', description: 'Verified manufacturers and suppliers worldwide, for single units or bulk orders.', includes: ['Worldwide sourcing', 'Single units', 'Bulk orders'], icon: 'Globe2' },
+  { title: 'New and used equipment supply', description: 'Machinery with condition details shared before you commit.', includes: ['New equipment', 'Used equipment', 'Condition details'], icon: 'Check' },
+  { title: 'Import and export support', description: 'Documentation, shipping coordination and delivery to your destination.', includes: ['Trade documentation', 'Shipping coordination', 'Worldwide delivery'], icon: 'Ship' },
+  { title: 'Wholesale and bulk supply', description: 'Household goods and dry pet food for retailers and distributors.', includes: ['Household items', 'Dry pet food', 'Bulk supply'], icon: 'PackageCheck' },
+  { title: 'Online marketplace selling', description: 'Branded products sold on Amazon, Walmart, eBay and TikTok Shop.', includes: ['Marketplace listings', 'Inventory and orders', 'Fulfillment and returns'], icon: 'Store' },
+  { title: 'Brand partnership', description: 'We represent and sell your brand across major online marketplaces.', includes: ['Listings and pricing', 'Fulfillment', 'Customer support'], icon: 'Star' },
+  { title: 'OEM and private label', description: 'Custom sourcing and branding for selected product lines.', includes: ['Custom sourcing', 'Selected product lines', 'Private label'], icon: 'Star' },
+  { title: 'Industrial procurement', description: 'End-to-end procurement management for industrial projects.', includes: ['Industrial project procurement', 'Supplier verification', 'Order processing'], icon: 'PackageCheck' },
+  { title: 'Supply chain solutions', description: 'Logistics and inventory coordination to keep supply steady.', includes: ['Logistics coordination', 'Inventory coordination', 'Supply continuity'], icon: 'Truck' },
 ]
 
 export const processStepsDetailed: [string, string][] = [
@@ -170,10 +170,10 @@ export const processStepsDetailed: [string, string][] = [
 ]
 
 export const aboutStats: [string, string][] = [
-  ['USA-Based', 'Head office in Hicksville, New York'],
-  ['Global Network', 'Verified suppliers worldwide'],
-  ['End-to-End', 'Sourcing through to delivery'],
-  ['Dedicated Support', 'One team from quote to handover'],
+  ['USA-based', 'Hicksville, New York'],
+  ['New and used', 'Machinery and commercial generators'],
+  ['Four marketplaces', 'Amazon · Walmart · eBay · TikTok Shop'],
+  ['Worldwide delivery', 'Documentation and shipping coordination'],
 ]
 
 export const homeIndustries = industries.slice(0, 6)
@@ -185,7 +185,7 @@ export const sourcingSteps: [string, string, string][] = [
 ]
 
 export const whatsNextSteps: [string, string, string][] = [
-  ['01', 'We Review Your Request', 'Our team reviews your requirements within one business day.'],
+  ['01', 'We Review Your Request', 'Our team reviews your requirements and destination details.'],
   ['02', 'Availability & Quotation', 'We confirm availability and send a formal quotation.'],
   ['03', 'Delivery & Support', 'We manage logistics and support you through handover.'],
 ]
