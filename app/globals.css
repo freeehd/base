@@ -2126,3 +2126,85 @@ a:focus-visible, button:focus-visible {
     border-top: 0;
   }
 }
+
+
+/* 2026 content expansion: reuse the existing charcoal/amber design tokens. */
+.catalog-filters { margin-bottom: 28px; }
+.catalog-media-text {
+  display: flex;
+  align-items: flex-end;
+  padding: 58px 26px 26px;
+  background: var(--coal);
+  border-bottom: 4px solid var(--amber);
+  color: var(--txt);
+}
+.catalog-media-text strong {
+  font: 800 clamp(1.25rem, 2vw, 1.7rem)/1.13 var(--font-display);
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+.catalog-disclaimer {
+  margin: 26px 0 0;
+  color: var(--steel-l);
+  font-size: 14px;
+}
+.marketplaces { background: var(--paper); }
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--line-l);
+  background: var(--white);
+}
+.marketplace-card { padding: 28px 24px; border-right: 1px solid var(--line-l); }
+.marketplace-card:last-child { border-right: 0; }
+.marketplace-card h3 { font-size: 20px; margin-bottom: 14px; }
+.marketplace-card p { margin: 0; color: var(--steel-l); font-size: 14px; }
+.marketplace-capabilities { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0; }
+.marketplace-capabilities li {
+  padding: 8px 14px;
+  border: 1px solid var(--line-l);
+  color: var(--mut-l);
+  font: 600 12px var(--font-mono);
+  border-radius: var(--radius);
+}
+.marketplace-cta {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 32px; padding: 38px; background: var(--ink);
+  border-left: 5px solid var(--amber);
+}
+.marketplace-cta > div { max-width: 72ch; }
+.marketplace-cta h3 { font-size: clamp(1.45rem, 3vw, 2rem); max-width: 28ch; }
+.marketplace-cta p { margin: 14px 0 0; color: var(--mut); }
+.marketplace-cta .btn { flex-shrink: 0; }
+.faq-section { background: var(--mist); }
+.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+.faq-list { border-top: 2px solid var(--ink); }
+.faq-list details { padding: 19px 0; border-bottom: 1px solid var(--line-l); }
+.faq-list summary {
+  list-style: none; display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; cursor: pointer; font: 700 17px/1.45 var(--font-display); color: var(--txt-l);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: '+'; flex-shrink: 0; font: 700 24px var(--font-display); color: var(--amber-text); }
+.faq-list details[open] summary::after { content: '−'; }
+.faq-list details p { color: var(--mut-l); margin: 12px 0 0; max-width: 65ch; }
+.faq-list summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 5px; }
+.quote-form > small a { text-decoration: underline; }
+@media (max-width: 1100px) {
+  .marketplace-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .marketplace-card:nth-child(2) { border-right: 0; }
+  .marketplace-card:nth-child(-n+2) { border-bottom: 1px solid var(--line-l); }
+  .marketplace-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 780px) {
+  .faq-grid { grid-template-columns: 1fr; gap: 34px; }
+  .marketplace-cta { padding: 28px; }
+  .check-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .marketplace-grid { grid-template-columns: 1fr; }
+  .marketplace-card { border-right: 0; border-bottom: 1px solid var(--line-l); }
+  .marketplace-card:last-child { border-bottom: 0; }
+  .marketplace-cta .btn { width: 100%; }
+  .catalog-filters button { flex: 1 1 100%; }
+}

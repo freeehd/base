@@ -13,17 +13,17 @@ const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.thebasetrading.com'),
   title: {
-    default: 'The Base Trading | Global Machinery & Industrial Equipment Sourcing',
+    default: 'Base Trading | Machinery, Generators, Test Equipment & Marketplace Sales',
     template: '%s | The Base Trading',
   },
-  description: 'USA-based international trading company sourcing earth-moving machinery, industrial equipment, electrical systems, generators and mechanical solutions worldwide.',
+  description: 'USA-based trading company supplying new and used earth-moving machinery, industrial equipment, commercial generators, test and measurement equipment, household goods and dry pet food, with online sales on Amazon, Walmart, eBay and TikTok Shop.',
   icons: {
     icon: '/icon.png',
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: 'The Base Trading — Global Trading & Industrial Supply Solutions You Can Trust',
-    description: 'Premium earth-moving machinery, industrial equipment, generators and spare parts with end-to-end sourcing and worldwide shipment.',
+    title: 'Base Trading — Machinery, Power, Instruments and Everyday Goods',
+    description: 'Machinery, industrial equipment, generators, test instruments, household goods and dry pet food — USA-based sourcing and global marketplace sales.',
     type: 'website',
     url: '/',
     siteName: 'The Base Trading',

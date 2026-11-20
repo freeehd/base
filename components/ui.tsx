@@ -10,7 +10,7 @@ export function LinkButton({ children, ghost = false, href = '/contact' }: { chi
 }
 
 export function Brand({ showSubtitle = true }: { showSubtitle?: boolean }) {
-  return <a className="brand" href="/" aria-label="The Base Trading home"><img src="/logo.png" alt="The Base Trading" className="brand-logo" />{showSubtitle && <small>Global Trading &amp; Industrial Solutions</small>}</a>
+  return <a className="brand" href="/" aria-label="The Base Trading home"><img src="/logo.png" alt="The Base Trading" className="brand-logo" />{showSubtitle && <small>Industrial Supply &amp; Marketplace Sales</small>}</a>
 }
 
 export function CheckList({ items }: { items: string[] }) {
