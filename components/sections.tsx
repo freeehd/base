@@ -55,8 +55,8 @@ export function Hero() {
             <ArrowRight size={17} aria-hidden="true" />
           </a>
           <a className="hero-business-board__row" href="/products">
-            <div className="hero-business-board__symbol" aria-hidden="true">
-              <PackageCheck size={26} strokeWidth={1.6} />
+            <div className="hero-business-board__media">
+              <img src={images.household} alt="" width={320} height={340} loading="lazy" decoding="async" />
             </div>
             <div className="hero-business-board__details">
               <span>02 / Wholesale &amp; Retail</span>
@@ -66,8 +66,8 @@ export function Hero() {
             <ArrowRight size={17} aria-hidden="true" />
           </a>
           <a className="hero-business-board__row" href="/online-stores">
-            <div className="hero-business-board__symbol" aria-hidden="true">
-              <Store size={26} strokeWidth={1.6} />
+            <div className="hero-business-board__media">
+              <img src={images.ecommercePacking} alt="" width={320} height={340} loading="lazy" decoding="async" />
             </div>
             <div className="hero-business-board__details">
               <span>03 / E-Commerce</span>

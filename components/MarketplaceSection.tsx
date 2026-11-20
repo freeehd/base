@@ -1,11 +1,32 @@
 import { ArrowRight } from 'lucide-react'
 import { ArrowLink, Kicker, LinkButton } from './ui'
+import { images } from './site-data'
 
 const marketplaces = [
-  { name: 'Amazon', description: 'Household essentials, dry pet food and general merchandise.' },
-  { name: 'Walmart Marketplace', description: 'Daily-use products at competitive prices.' },
-  { name: 'eBay', description: 'New and select pre-owned products, including tools and equipment.' },
-  { name: 'TikTok Shop', description: 'Trending products reaching new audiences through social commerce.' },
+  {
+    name: 'Amazon',
+    description: 'Household essentials, dry pet food and general merchandise.',
+    image: images.ecommercePacking,
+    label: 'Order fulfillment',
+  },
+  {
+    name: 'Walmart Marketplace',
+    description: 'Daily-use products at competitive prices.',
+    image: images.retailShelves,
+    label: 'Everyday retail',
+  },
+  {
+    name: 'eBay',
+    description: 'New and select pre-owned products, including tools and equipment.',
+    image: images.secondhandTools,
+    label: 'Tools and equipment',
+  },
+  {
+    name: 'TikTok Shop',
+    description: 'Trending products reaching new audiences through social commerce.',
+    image: images.socialCommerce,
+    label: 'Social commerce',
+  },
 ]
 
 const capabilities = [
@@ -25,10 +46,16 @@ export default function MarketplaceSection({ standalone = false }: { standalone?
           <p className="lead">We run an online retail operation selling a variety of brands on major marketplaces, handling everything from sourcing to returns.</p>
         </div>
         <div className="marketplace-grid">
-          {marketplaces.map(({ name, description }) => (
+          {marketplaces.map(({ name, description, image, label }) => (
             <article key={name} className="marketplace-card">
-              <h3>{name}</h3>
-              <p>{description}</p>
+              <div className="marketplace-card__media">
+                <img src={image} alt="" width={960} height={600} loading="lazy" decoding="async" />
+                <span>{label}</span>
+              </div>
+              <div className="marketplace-card__content">
+                <h3>{name}</h3>
+                <p>{description}</p>
+              </div>
             </article>
           ))}
         </div>

@@ -1,11 +1,12 @@
 import { ArrowRight, Check, Globe2, PackageCheck, Ship, Star, Store, Truck } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { servicesDetailed } from './site-data'
+import { images, servicesDetailed } from './site-data'
 import { Kicker, LinkButton } from './ui'
 
 const tracks = [
   {
     id: 'source-and-supply',
+    image: images.industrial,
     number: '01',
     short: 'Sourcing & supply',
     heading: 'The right products for the job',
@@ -21,6 +22,7 @@ const tracks = [
   },
   {
     id: 'trade-and-logistics',
+    image: images.globalFreight,
     number: '02',
     short: 'Trade & logistics',
     heading: 'From supplier to destination',
@@ -34,6 +36,7 @@ const tracks = [
   },
   {
     id: 'marketplaces-and-brands',
+    image: images.ecomFulfillment,
     number: '03',
     short: 'Marketplaces & brands',
     heading: 'Sell through established marketplaces',
@@ -112,6 +115,9 @@ export function ServicesDirectory() {
               aria-labelledby={track.id + '-title'}>
               <div className="services-track__intro">
                 <span className="services-track__index">{track.number} / {track.short}</span>
+                <div className="services-track__visual">
+                  <img src={track.image} alt="" width={960} height={500} loading="lazy" decoding="async" />
+                </div>
                 <h3 id={track.id + '-title'}>{track.heading}</h3>
                 <p>{track.description}</p>
                 <a href={track.href} className="services-track__action">
