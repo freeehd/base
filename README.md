@@ -51,3 +51,14 @@ npm run build
 To retry the Turbopack production build once the underlying worker issue is resolved, use `npm run build:turbo`. Restore the default build command only after a successful test.
 
 **Note:** This is a targeted bundler workaround, not a dependency upgrade. The npm lockfile's root package name has been synchronized with `package.json`; dependency versions are unchanged. A dependency upgrade should be done separately with registry access and a regenerated lockfile.
+
+## Security and bot traffic
+
+- Production uses Next.js 16.4.6 and npm overrides for `proxy-addr >=2.0.8` and `systeminformation >=5.33.16`. The lockfile must be regenerated with `npm install --package-lock-only` and committed before deploying.
+- `next.config.mjs` applies browser-facing security headers.
+- `proxy.ts` rejects common scanner probes such as `/.env`, `/.git`, `/wp-login.php` and `/xmlrpc.php` without inspecting or blocking normal visitors or legitimate search engine crawlers.
+- `robots.txt` disallows indexing internal API and framework paths. Robots directives are voluntary and **not** a security boundary.
+- The existing quote form opens the visitor's email app, so there is currently no public form-submission endpoint to rate-limit.
+- **Important hosting action:** Enable Vercel Firewall managed rules and rate limiting/challenges for abnormal request volume and bot attacks in the Vercel dashboard. Application-level checks cannot provide distributed rate limiting or DDoS defense.
+- The GitHub security workflow audits production dependencies and builds on PRs and weekly; Dependabot opens upgrade PRs.
+- Do not treat a successful npm audit as proof that all security issues are eliminated. Review transitive and development dependency advisories and rerun a complete `npm audit`.

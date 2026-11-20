@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint .",
     "build:turbo": "next build",
-    "clean": "node -e \"require('node:fs').rmSync('.next', { recursive: true, force: true })\""
+    "clean": "node -e \"require('node:fs').rmSync('.next', { recursive: true, force: true })\"",
+    "audit:prod": "npm audit --omit=dev --audit-level=high",
+    "audit:all": "npm audit --audit-level=moderate"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -16,7 +18,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",
-    "next": "16.3.0",
+    "next": "16.4.6",
     "react": "^19",
     "react-dom": "^19",
     "shadcn": "^4.8.0",
@@ -32,10 +34,9 @@
     "tailwindcss": "^4.3.3",
     "typescript": "5.7.3"
   },
-  "pnpm": {
-    "overrides": {
-      "hono": "4.12.25"
-    }
-  },
-  "packageManager": "npm@10.9.2"
+  "packageManager": "npm@10.9.2",
+  "overrides": {
+    "proxy-addr": "^2.0.8",
+    "systeminformation": "^5.33.16"
+  }
 }
