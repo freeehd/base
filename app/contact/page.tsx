@@ -1,23 +1,22 @@
 import type { Metadata } from 'next'
-import { PageHeader, WhatsNextStrip } from '@/components/sections'
+import { PageHeader } from '@/components/sections'
 import ContactSection from '@/components/ContactSection'
+import FAQSection from '@/components/FAQSection'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Request a quote from The Base Trading — USA-based global sourcing and delivery of industrial equipment, generators and machinery.',
+  title: 'Contact & Request a Quote',
+  description: 'Request availability for machinery, generators, test equipment, household goods, dry pet food or marketplace brand partnerships from Base Trading.',
   alternates: { canonical: '/contact' },
 }
 
 export default function ContactPage() {
   return (
     <main id="main">
-      <PageHeader
-        kicker="Get In Touch"
+      <PageHeader kicker="Get in Touch"
         title={<>Let's Work <em>Together</em></>}
-        lead="USA-based · serving industries worldwide. Send us your requirements and our team will respond with availability and a tailored quotation."
-      />
+        lead="Based in Hicksville, New York, supplying customers worldwide. Tell us what you need, from one machine to bulk goods or a marketplace partnership." />
       <ContactSection />
-      <WhatsNextStrip />
+      <FAQSection />
     </main>
   )
 }

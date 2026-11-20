@@ -3,25 +3,21 @@ import { CtaBand, LogisticsSection, PageHeader, ServicesProcess, ServiceShowcase
 
 export const metadata: Metadata = {
   title: 'Services',
-  description: 'Global product sourcing, import & export, industrial procurement, OEM & private label and supply chain solutions — end-to-end trading services from The Base Trading.',
+  description: 'Worldwide product sourcing, new and used machinery, import-export, wholesale goods, marketplace selling, brand partnerships, OEM and industrial procurement.',
   alternates: { canonical: '/services' },
 }
 
 export default function ServicesPage() {
   return (
     <main id="main">
-      <PageHeader
-        kicker="What We Do"
-        title={<>End-to-End Trading Services, <em>From Sourcing to Delivery</em></>}
-        lead="We handle the full journey — connecting you with trusted manufacturers worldwide, managing procurement and documentation, and delivering to your site on time."
-      />
+      <PageHeader kicker="What We Do"
+        title={<>Sourcing, Procurement <em>&amp; Selling</em></>}
+        lead="From verified global product sourcing to new and used equipment, bulk goods, marketplace sales and brand partnerships — one team and one process." />
       <ServiceShowcase />
       <ServicesProcess />
       <LogisticsSection />
-      <CtaBand
-        title={<>Let's Plan Your Next Order</>}
-        copy="Tell us what you need — our team responds with availability and a tailored quotation."
-      />
+      <CtaBand title={<>Let's Plan Your Next Order</>}
+        copy="Tell us your product category, quantities and destination so we can discuss availability and a quotation." />
     </main>
   )
 }

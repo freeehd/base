@@ -3,25 +3,21 @@ import { AboutStory, CtaBand, PageHeader, PromiseSection, WhySection } from '@/c
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'The Base Trading is a USA-based international trading company specializing in sourcing earth-moving machinery, industrial equipment, electrical systems and mechanical solutions worldwide.',
+  description: 'Base Trading is a USA-based company in Hicksville, New York supplying machinery, generators, test instruments, household goods and dry pet food worldwide, and selling on major marketplaces.',
   alternates: { canonical: '/about' },
 }
 
 export default function AboutPage() {
   return (
     <main id="main">
-      <PageHeader
-        kicker="About The Base Trading"
-        title={<>A USA-Based Trading Partner <em>You Can Count On</em></>}
-        lead="End-to-end sourcing, procurement and worldwide shipment of premium industrial equipment — built on quality, transparency and long-term partnerships."
-      />
+      <PageHeader kicker="About Base Trading"
+        title={<>A Diversified Trading Company <em>Built on Reliable Sourcing</em></>}
+        lead="From industrial machinery and test instruments to everyday goods and online marketplace sales — USA-based sourcing with worldwide shipment." />
       <AboutStory />
       <WhySection />
       <PromiseSection />
-      <CtaBand
-        title={<>Ready to Start a Conversation?</>}
-        copy="Tell us what you need — our team responds with availability and a tailored quotation."
-      />
+      <CtaBand title={<>Ready to Start a Conversation?</>}
+        copy="Tell us what you need — equipment, wholesale goods or a marketplace brand partnership." />
     </main>
   )
 }

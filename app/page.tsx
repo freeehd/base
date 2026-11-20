@@ -4,28 +4,25 @@ import {
   ProductsSection, ServicesTeaser, TrustBar,
 } from '@/components/sections'
 import { ArrowLink } from '@/components/ui'
+import MarketplaceSection from '@/components/MarketplaceSection'
+import FAQSection from '@/components/FAQSection'
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/' },
-}
+export const metadata: Metadata = { alternates: { canonical: '/' } }
 
 export default function HomePage() {
   return (
     <main id="main">
       <Hero />
       <TrustBar />
-      <AboutTeaser />
+      <ProductsSection more={<ArrowLink href="/products">View All Products</ArrowLink>} />
+      <MarketplaceSection />
       <ServicesTeaser />
-      <ProductsSection
-        kicker="03"
-        more={<ArrowLink href="/products">View All Products</ArrowLink>}
-      />
       <IndustriesTeaser />
       <ProcessSection index="05" />
-      <CtaBand
-        title={<>Ready to Source Premium Industrial Equipment?</>}
-        copy="Our experienced team is ready to help you find reliable products and customized trading solutions."
-      />
+      <AboutTeaser />
+      <FAQSection />
+      <CtaBand title={<>Need to source a product or list your brand?</>}
+        copy="Send us the category, quantity and destination — or tell us about your brand partnership needs." />
     </main>
   )
 }
