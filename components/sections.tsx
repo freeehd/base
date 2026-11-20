@@ -236,7 +236,7 @@ export function AboutStory() {
             <h2>A diversified trading company built on reliable sourcing</h2>
           </div>
           <div className="reveal">
-            <p>Base Trading is a USA-based international trading company in Hicksville, New York. We supply new and used earth-moving machinery, industrial machines, commercial generators and test and measurement instruments, as well as household items and dry pet food.</p>
+            <p>Base Trading is a USA-based international trading company in New York. We supply new and used earth-moving machinery, industrial machines, commercial generators, test and measurement instruments, as well as household items and dry pet food.</p>
             <p>We are also an active online seller across Amazon, Walmart, eBay and TikTok Shop. Whatever you need, you deal with one team and one process.</p>
             <ul className="defines">
               {trustItems.map(([title, copy]) => (
