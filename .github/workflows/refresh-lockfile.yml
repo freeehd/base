@@ -1,6 +1,8 @@
 name: Refresh npm lockfile for security update
 
 on:
+  push:
+    branches: [security/dependency-updates-bot-guards]
   workflow_dispatch:
 
 permissions:
