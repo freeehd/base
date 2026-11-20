@@ -8,6 +8,7 @@ import {
   valuesList, whatsNextSteps, whyItems,
 } from './site-data'
 import { ArrowLink, CheckList, Kicker, LinkButton } from './ui'
+import ProductCatalog from './ProductCatalog'
 
 const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   Building2, Check, CircleDot, Factory, Flame, Globe2, HardHat, Landmark,
@@ -16,26 +17,26 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
 
 /* ---------------- HOME ---------------- */
 
+
 export function Hero() {
   return (
     <section className="hero on-dark" id="home">
       <div className="container hero-grid">
         <div>
-          <h1>Global Trading &amp; Industrial Supply Solutions <em>You Can Trust</em></h1>
-          <p className="lead">Outsourcing and delivering premium Earth-Moving Machinery, Industrial Equipment, Electrical Systems, all types of Generators, and Mechanical Solutions to serve industries worldwide.</p>
+          <h1>One trusted partner for <em>machinery, power, instruments and everyday goods</em></h1>
+          <p className="lead">We source and supply new and used earth-moving machinery, industrial equipment, commercial generators and test and measurement equipment. We also sell household items and dry pet food in bulk and through Amazon, Walmart, eBay and TikTok Shop.</p>
           <div className="hero-ctas">
             <LinkButton>Request a Quote <ArrowRight size={15} /></LinkButton>
-            <LinkButton ghost href="/products">Explore Equipment Categories</LinkButton>
+            <LinkButton ghost href="/products">Browse Categories</LinkButton>
           </div>
           <ul className="hero-chips">
-            {['Earth-Moving Machinery', 'Industrial Equipment', 'Electrical Systems', 'Generators', 'Mechanical Solutions'].map((item) => <li key={item}>+ {item}</li>)}
+            {['Earth-moving machinery', 'Industrial machines', 'Commercial generators', 'Test instruments', 'Household goods', 'Dry pet food'].map((item) => <li key={item}>+ {item}</li>)}
           </ul>
         </div>
         <div className="hero-visual">
           <div className="frame">
-            <img src={images.hero} alt="Heavy earth-moving machinery on an industrial yard at dawn" fetchPriority="high" />
+            <img src={images.hero} alt="Heavy earth-moving machinery at an industrial yard" fetchPriority="high" />
           </div>
-         
         </div>
       </div>
     </section>
@@ -60,17 +61,18 @@ export function TrustBar() {
   )
 }
 
+
 export function AboutTeaser() {
   return (
     <section className="about" id="about">
       <div className="container about-grid">
         <div className="about-sticky reveal">
-          <Kicker index="01">About Base Trading</Kicker>
-          <h2>Building Long-Term Business Partnerships Across Global Markets</h2>
+          <Kicker index="06">About Base Trading</Kicker>
+          <h2>A diversified trading company built on reliable sourcing</h2>
         </div>
         <div className="reveal">
-          <p>The Base Trading is a trusted, USA-based international trading company specializing in sourcing earth-moving machinery, industrial equipment, electrical systems, and mechanical equipment — with end-to-end sourcing, procurement and shipment services that help businesses streamline operations worldwide.</p>
-          <p style={{ marginBottom: 28 }}>Our commitment to quality, transparency, and customer satisfaction has enabled us to build strong partnerships with contractors, industrial companies, wholesalers, distributors, and retailers around the world.</p>
+          <p>Base Trading is a USA-based international trading company in Hicksville, New York. We supply new and used earth-moving machinery, industrial machines, commercial generators and test and measurement instruments, as well as household items and dry pet food.</p>
+          <p>We are also an active online seller across Amazon, Walmart, eBay and TikTok Shop. Whatever you need, you deal with one team and one process.</p>
           <ArrowLink href="/about">More About Us</ArrowLink>
         </div>
       </div>
@@ -85,9 +87,9 @@ export function ServicesTeaser() {
         <div className="sec-head reveal">
           <div>
             <Kicker index="02">What We Do</Kicker>
-            <h2>Services Built Around Your Supply Chain</h2>
+            <h2>Sourcing, Procurement and Selling for Every Category</h2>
           </div>
-          <p className="lead">Sourcing, procurement and logistics — the full journey, handled by one team.</p>
+          <p className="lead">From equipment sourcing and global shipping to wholesale, marketplace selling and brand partnerships.</p>
         </div>
         <div className="svc-teaser-grid">
           {servicesTeaser.map(([title, copy, icon], i) => {
@@ -108,33 +110,19 @@ export function ServicesTeaser() {
   )
 }
 
-export function ProductsSection({ more, kicker = '02', title = 'Explore Our Wide Range of Products', lead }: { more?: React.ReactNode; kicker?: string; title?: string; lead?: string }) {
+
+export function ProductsSection({ more, kicker = '02', title = 'Everything we trade, organized by category', lead = 'Filter by type, then ask for availability. Used equipment is quoted with condition details.' }: { more?: React.ReactNode; kicker?: string; title?: string; lead?: string }) {
   return (
     <section className="products" id="products">
       <div className="container">
         <div className="sec-head reveal">
           <div>
-            <Kicker index={kicker}>Featured Product Categories</Kicker>
+            <Kicker index={kicker}>Product Categories</Kicker>
             <h2>{title}</h2>
           </div>
-          {lead && <p className="lead">{lead}</p>}
+          <p className="lead">{lead}</p>
         </div>
-        <div className="cat-grid">
-          {categories.map((card) => (
-            <article className="cat-card reveal" key={card.title}>
-              <div className="c-media">
-                <span>{card.tag}</span>
-                <img src={card.image} alt={card.title} loading="lazy" decoding="async" />
-              </div>
-              <div className="c-body">
-                <h3>{card.title}</h3>
-                <CheckList items={card.items} />
-                <p className="c-note">{card.note}</p>
-                <ArrowLink href="/contact">Request Availability</ArrowLink>
-              </div>
-            </article>
-          ))}
-        </div>
+        <ProductCatalog />
         {more && <div className="sec-more reveal">{more}</div>}
       </div>
     </section>
@@ -148,9 +136,9 @@ export function IndustriesTeaser() {
         <div className="sec-head reveal">
           <div>
             <Kicker index="04">Industries We Serve</Kicker>
-            <h2>Equipment &amp; Supply Solutions for Every Sector</h2>
+            <h2>Serving Industry, Commerce and Retail</h2>
           </div>
-          <p className="lead">Delivering specialized machinery, power systems, and equipment tailored to the unique operational demands of global industries.</p>
+          <p className="lead">From construction and engineering to wholesale and e-commerce, we supply equipment and everyday products across sectors.</p>
         </div>
         <div className="ind-grid reveal">
           {homeIndustries.map(({ title, desc, icon }) => {
@@ -166,7 +154,7 @@ export function IndustriesTeaser() {
             )
           })}
         </div>
-        <p className="ind-more reveal">Serving 10+ sectors worldwide — mining, commercial facilities, government &amp; more</p>
+        <p className="ind-more reveal">Sourcing and shipping for industrial, commercial and retail needs</p>
       </div>
     </section>
   )
@@ -194,6 +182,7 @@ export function ProcessSection({ index = '07' }: { index?: string }) {
 
 /* ---------------- ABOUT ---------------- */
 
+
 export function AboutStory() {
   return (
     <section className="about" id="about">
@@ -201,12 +190,11 @@ export function AboutStory() {
         <div className="about-grid">
           <div className="about-sticky reveal">
             <Kicker index="01">About Base Trading</Kicker>
-            <h2>Building Long-Term Business Partnerships Across Global Markets</h2>
+            <h2>A diversified trading company built on reliable sourcing</h2>
           </div>
           <div className="reveal">
-            <p>The Base Trading is a trusted, USA-based international trading company specializing in sourcing earth-moving machinery, industrial equipment, electrical systems, and mechanical equipment. We provide end-to-end sourcing, procurement, and shipment services that help businesses streamline operations and access premium equipment from trusted manufacturers worldwide.</p>
-            <p>Our commitment to quality, transparency, and customer satisfaction has enabled us to build strong partnerships with contractors, industrial companies, wholesalers, distributors, and retailers around the world.</p>
-            <p>Every engagement is managed by a single dedicated team — from the first inquiry through supplier verification, quotation, and delivery — so you always know who is handling your order and where it stands.</p>
+            <p>Base Trading is a USA-based international trading company in Hicksville, New York. We supply new and used earth-moving machinery, industrial machines, commercial generators and test and measurement instruments, as well as household items and dry pet food.</p>
+            <p>We are also an active online seller across Amazon, Walmart, eBay and TikTok Shop. Whatever you need, you deal with one team and one process.</p>
             <ul className="defines">
               {trustItems.map(([title, copy]) => (
                 <li key={title}><h5><Check size={16} />{title}</h5><p>{copy}</p></li>
@@ -215,9 +203,7 @@ export function AboutStory() {
           </div>
         </div>
         <ul className="stats-grid reveal">
-          {aboutStats.map(([label, value]) => (
-            <li key={label}><strong>{label}</strong><span>{value}</span></li>
-          ))}
+          {aboutStats.map(([label, value]) => <li key={label}><strong>{label}</strong><span>{value}</span></li>)}
         </ul>
       </div>
     </section>
@@ -230,8 +216,8 @@ export function WhySection() {
       <div className="container why-grid">
         <div className="why-sticky reveal">
           <Kicker index="05">Why Choose Base Trading?</Kicker>
-          <h2>Quality You Can Trust. Partnerships You Can Build On.</h2>
-          <p className="lead">A USA-based trading partner with a global supplier network, transparent pricing and dedicated support at every step of the order.</p>
+          <h2>New and Used Supply, with One Sourcing Partner</h2>
+          <p className="lead">Machinery, power systems, test instruments and everyday goods supplied through a single sourcing process.</p>
           <LinkButton>Start a Conversation <ArrowRight size={15} /></LinkButton>
         </div>
         <ul className="why-list reveal">
@@ -249,7 +235,7 @@ export function PromiseSection() {
     <section className="promise on-dark" id="promise">
       <div className="container">
         <Kicker index="06" dark>Our Promise</Kicker>
-        <h2>Quality you can trust. <em>Partnerships you can build on.</em></h2>
+        <h2>Reliable sourcing. <em>From equipment to everyday goods.</em></h2>
         <ul className="vals">
           {valuesList.map(([title, copy, icon]) => {
             const Icon = iconMap[icon]
@@ -276,7 +262,7 @@ export function ServiceShowcase() {
         <div className="sec-head reveal">
           <div>
             <Kicker index="02" dark>Our Services</Kicker>
-            <h2>Comprehensive Solutions for Global Business Needs</h2>
+            <h2>Sourcing, Procurement and Selling for Every Category</h2>
           </div>
         </div>
         <div className="svc-list reveal">
@@ -339,7 +325,7 @@ export function LogisticsSection() {
         <div className="reveal">
           <Kicker index="10" dark>Global Reach</Kicker>
           <h2>From Supplier Floor to Your Site — Anywhere</h2>
-          <p className="lead">End-to-end sourcing, procurement and shipment services that help businesses streamline operations and access premium equipment from trusted manufacturers worldwide.</p>
+          <p className="lead">We coordinate documentation, shipping and worldwide delivery for machinery, industrial equipment and wholesale orders.</p>
           <ul className="logi-points">
             {logiPoints.map(([title, copy, icon]) => {
               const Icon = iconMap[icon]
