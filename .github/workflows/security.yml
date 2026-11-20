@@ -1,0 +1,32 @@
+name: Dependency remediation and security checks
+
+on:
+  push:
+    branches: [security/dependency-updates-bot-guards]
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies from lockfile
+        run: npm ci
+      - name: Audit production dependencies
+        run: npm run audit:prod
+      - name: Audit all dependencies, including development tools
+        run: npm run audit:all
+      - name: Compile production site
+        run: npm run build
