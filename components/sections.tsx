@@ -3,11 +3,13 @@ import {
   Landmark, Mountain, PackageCheck, ShieldCheck, Ship, Star, Store, Tractor, Truck, Zap,
 } from 'lucide-react'
 import {
-  aboutStats, categories, homeIndustries, images, industries, logiPoints,
-  processStepsDetailed, servicesDetailed, servicesTeaser, sourcingSteps, trustItems,
+  aboutStats, images, logiPoints,
+  processStepsDetailed, sourcingSteps, trustItems,
   valuesList, whatsNextSteps, whyItems,
 } from './site-data'
-import { ArrowLink, CheckList, Kicker, LinkButton } from './ui'
+import { ArrowLink, Kicker, LinkButton } from './ui'
+import ProductCatalog, { type CatalogGroup } from './ProductCatalog'
+import { aboutCopy, facts, faq, heroCopy, industryCopy, marketplaces, marketplaceIntro, marketplaceTasks, partnership, quoteHref, serviceCopy } from './trading-content'
 
 const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   Building2, Check, CircleDot, Factory, Flame, Globe2, HardHat, Landmark,
@@ -21,14 +23,14 @@ export function Hero() {
     <section className="hero on-dark" id="home">
       <div className="container hero-grid">
         <div>
-          <h1>Global Trading &amp; Industrial Supply Solutions <em>You Can Trust</em></h1>
-          <p className="lead">Outsourcing and delivering premium Earth-Moving Machinery, Industrial Equipment, Electrical Systems, all types of Generators, and Mechanical Solutions to serve industries worldwide.</p>
+          <h1>{heroCopy[0].split(' instruments')[0]} <em>instruments and everyday goods</em></h1>
+          <p className="lead">{heroCopy[1]}</p>
           <div className="hero-ctas">
             <LinkButton>Request a Quote <ArrowRight size={15} /></LinkButton>
-            <LinkButton ghost href="/products">Explore Equipment Categories</LinkButton>
+            <LinkButton ghost href="/products">Browse Categories</LinkButton>
           </div>
           <ul className="hero-chips">
-            {['Earth-Moving Machinery', 'Industrial Equipment', 'Electrical Systems', 'Generators', 'Mechanical Solutions'].map((item) => <li key={item}>+ {item}</li>)}
+            {['Earth-moving machinery', 'Industrial machines', 'Commercial generators', 'Test and measurement', 'Household items', 'Dry pet food'].map((item) => <li key={item}>+ {item}</li>)}
           </ul>
         </div>
         <div className="hero-visual">
@@ -46,8 +48,8 @@ export function TrustBar() {
   return (
     <div className="trust on-dark">
       <div className="container trust-grid">
-        {trustItems.map(([title, copy, icon]) => {
-          const Icon = iconMap[icon]
+        {facts.map(([title, copy], i) => {
+          const Icon = [PackageCheck, ShieldCheck, Store, Truck][i]
           return (
             <div className="t-item" key={title}>
               <h4><Icon size={16} />{title}</h4>
@@ -66,11 +68,10 @@ export function AboutTeaser() {
       <div className="container about-grid">
         <div className="about-sticky reveal">
           <Kicker index="01">About Base Trading</Kicker>
-          <h2>Building Long-Term Business Partnerships Across Global Markets</h2>
+          <h2>A diversified trading company built on reliable sourcing</h2>
         </div>
         <div className="reveal">
-          <p>The Base Trading is a trusted, USA-based international trading company specializing in sourcing earth-moving machinery, industrial equipment, electrical systems, and mechanical equipment — with end-to-end sourcing, procurement and shipment services that help businesses streamline operations worldwide.</p>
-          <p style={{ marginBottom: 28 }}>Our commitment to quality, transparency, and customer satisfaction has enabled us to build strong partnerships with contractors, industrial companies, wholesalers, distributors, and retailers around the world.</p>
+          {aboutCopy.map(copy => <p key={copy}>{copy}</p>)}
           <ArrowLink href="/about">More About Us</ArrowLink>
         </div>
       </div>
@@ -85,13 +86,14 @@ export function ServicesTeaser() {
         <div className="sec-head reveal">
           <div>
             <Kicker index="02">What We Do</Kicker>
-            <h2>Services Built Around Your Supply Chain</h2>
+            <h2>Sourcing, procurement and selling for every category</h2>
           </div>
           <p className="lead">Sourcing, procurement and logistics — the full journey, handled by one team.</p>
         </div>
         <div className="svc-teaser-grid">
-          {servicesTeaser.map(([title, copy, icon], i) => {
-            const Icon = iconMap[icon]
+          {[0, 3, 4].map((i) => {
+            const [title, copy] = serviceCopy[i]
+            const Icon = [Globe2, PackageCheck, Store][i === 0 ? 0 : i - 2]
             return (
               <article className="svc-teaser-card reveal" key={title}>
                 <span className="svc-ic"><Icon size={20} /></span>
@@ -108,7 +110,7 @@ export function ServicesTeaser() {
   )
 }
 
-export function ProductsSection({ more, kicker = '02', title = 'Explore Our Wide Range of Products', lead }: { more?: React.ReactNode; kicker?: string; title?: string; lead?: string }) {
+export function ProductsSection({ initialGroup, kicker = '02', title = 'Everything we trade, organized by category', lead }: { initialGroup: CatalogGroup; kicker?: string; title?: string; lead?: string }) {
   return (
     <section className="products" id="products">
       <div className="container">
@@ -119,23 +121,7 @@ export function ProductsSection({ more, kicker = '02', title = 'Explore Our Wide
           </div>
           {lead && <p className="lead">{lead}</p>}
         </div>
-        <div className="cat-grid">
-          {categories.map((card) => (
-            <article className="cat-card reveal" key={card.title}>
-              <div className="c-media">
-                <span>{card.tag}</span>
-                <img src={card.image} alt={card.title} loading="lazy" decoding="async" />
-              </div>
-              <div className="c-body">
-                <h3>{card.title}</h3>
-                <CheckList items={card.items} />
-                <p className="c-note">{card.note}</p>
-                <ArrowLink href="/contact">Request Availability</ArrowLink>
-              </div>
-            </article>
-          ))}
-        </div>
-        {more && <div className="sec-more reveal">{more}</div>}
+        <ProductCatalog key={initialGroup} initialGroup={initialGroup} />
       </div>
     </section>
   )
@@ -148,13 +134,13 @@ export function IndustriesTeaser() {
         <div className="sec-head reveal">
           <div>
             <Kicker index="04">Industries We Serve</Kicker>
-            <h2>Equipment &amp; Supply Solutions for Every Sector</h2>
+            <h2>Serving industry, commerce and retail</h2>
           </div>
-          <p className="lead">Delivering specialized machinery, power systems, and equipment tailored to the unique operational demands of global industries.</p>
+          <p className="lead">Equipment, instruments and bulk goods for buyers across industrial and retail sectors.</p>
         </div>
         <div className="ind-grid reveal">
-          {homeIndustries.map(({ title, desc, icon }) => {
-            const Icon = iconMap[icon]
+          {industryCopy.map(([title, desc], i) => {
+            const Icon = [HardHat, Factory, Zap, Mountain, CircleDot, Store][i]
             return (
               <article className="ind-card" key={title}>
                 <div className="ind-icon"><Icon size={22} /></div>
@@ -166,7 +152,6 @@ export function IndustriesTeaser() {
             )
           })}
         </div>
-        <p className="ind-more reveal">Serving 10+ sectors worldwide — mining, commercial facilities, government &amp; more</p>
       </div>
     </section>
   )
@@ -179,7 +164,7 @@ export function ProcessSection({ index = '07' }: { index?: string }) {
         <div className="sec-head reveal">
           <div>
             <Kicker index={index}>Our Process</Kicker>
-            <h2>Simple Steps. Reliable Results.</h2>
+            <h2>How an order works</h2>
           </div>
         </div>
         <ol className="steps reveal">
@@ -201,12 +186,10 @@ export function AboutStory() {
         <div className="about-grid">
           <div className="about-sticky reveal">
             <Kicker index="01">About Base Trading</Kicker>
-            <h2>Building Long-Term Business Partnerships Across Global Markets</h2>
+            <h2>A diversified trading company built on reliable sourcing</h2>
           </div>
           <div className="reveal">
-            <p>The Base Trading is a trusted, USA-based international trading company specializing in sourcing earth-moving machinery, industrial equipment, electrical systems, and mechanical equipment. We provide end-to-end sourcing, procurement, and shipment services that help businesses streamline operations and access premium equipment from trusted manufacturers worldwide.</p>
-            <p>Our commitment to quality, transparency, and customer satisfaction has enabled us to build strong partnerships with contractors, industrial companies, wholesalers, distributors, and retailers around the world.</p>
-            <p>Every engagement is managed by a single dedicated team — from the first inquiry through supplier verification, quotation, and delivery — so you always know who is handling your order and where it stands.</p>
+            {aboutCopy.map(copy => <p key={copy}>{copy}</p>)}
             <ul className="defines">
               {trustItems.map(([title, copy]) => (
                 <li key={title}><h5><Check size={16} />{title}</h5><p>{copy}</p></li>
@@ -280,20 +263,17 @@ export function ServiceShowcase() {
           </div>
         </div>
         <div className="svc-list reveal">
-          {servicesDetailed.map((service, i) => {
-            const Icon = iconMap[service.icon]
+          {serviceCopy.map(([title, description], i) => {
+            const Icon = [Globe2, Tractor, Ship, PackageCheck, Store, Star, ShieldCheck, Factory, Truck][i]
             return (
-              <div className="svc-detail" key={service.title}>
+              <div className="svc-detail" key={title}>
                 <span className="num">/ 0{i + 1}</span>
                 <div>
                   <div className="svc-detail-head">
-                    <h3>{service.title}</h3>
+                    <h3>{title}</h3>
                     <span className="svc-ic"><Icon size={20} /></span>
                   </div>
-                  <p>{service.description}</p>
-                  <ul className="includes">
-                    {service.includes.map((inc) => <li key={inc}>{inc}</li>)}
-                  </ul>
+                  <p>{description}</p>
                 </div>
               </div>
             )
@@ -311,7 +291,7 @@ export function ServicesProcess() {
         <div className="sec-head reveal">
           <div>
             <Kicker index="03">How We Work</Kicker>
-            <h2>Simple Steps. Reliable Results.</h2>
+            <h2>How an order works</h2>
           </div>
         </div>
         <ol className="steps steps-lg reveal">
@@ -423,9 +403,48 @@ export function WhatsNextStrip() {
             <Kicker>What Happens Next</Kicker>
             <h2>From Inquiry to Delivery in Three Steps</h2>
           </div>
-          <p className="lead">Your request reaches a dedicated team — here is what happens after you hit submit.</p>
+          <p className="lead">After you send your email, our team reviews your requirements and confirms availability.</p>
         </div>
         <MiniSteps steps={whatsNextSteps} />
+      </div>
+    </section>
+  )
+}
+
+
+export function MarketplaceSection() {
+  return (
+    <section className="svc-teaser" id="online">
+      <div className="container">
+        <div className="sec-head reveal">
+          <div><Kicker>Online Stores</Kicker><h2>Our brands, available where you already shop</h2></div>
+          <p className="lead">{marketplaceIntro}</p>
+        </div>
+        <div className="svc-teaser-grid">
+          {marketplaces.map(([title, copy]) => (
+            <article className="svc-teaser-card reveal" key={title}>
+              <span className="svc-ic"><Store size={20} /></span><h3>{title}</h3><p>{copy}</p>
+            </article>
+          ))}
+        </div>
+        <ul className="marketplace-tasks reveal">{marketplaceTasks.map(task => <li key={task}>{task}</li>)}</ul>
+        <div className="marketplace-cta reveal">
+          <div><h3>{partnership[0]}</h3><p className="lead">{partnership[1]}</p></div>
+          <LinkButton href={quoteHref('Brand partnership')}>Become a brand partner <ArrowRight size={15} /></LinkButton>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function FaqSection() {
+  return (
+    <section className="about" id="faq">
+      <div className="container about-grid">
+        <div className="about-sticky"><Kicker>FAQ</Kicker><h2>Common questions</h2></div>
+        <div className="trading-faq">
+          {faq.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}
+        </div>
       </div>
     </section>
   )

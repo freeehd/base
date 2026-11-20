@@ -7,21 +7,24 @@ const columns: [string, [string, string][]][] = [
     ['Why Choose Us', '/about#why'],
     ['Our Promise', '/about#promise'],
     ['Process', '/#process'],
+    ['Industries', '/#industries'],
+    ['FAQ', '/contact#faq'],
     ['Contact', '/contact'],
   ]],
   ['Products', [
-    ['Heavy Construction Equipment', '/products'],
-    ['Industrial Equipment', '/products'],
-    ['Spare Parts', '/products'],
-    ['Generator Sets', '/products#stock'],
-    ['Marine Engines', '/products#stock'],
+    ['Earth-moving machinery', '/products#category-earth-moving-machinery'],
+    ['Industrial machines', '/products#category-industrial-machines'],
+    ['Commercial generators', '/products#category-commercial-generators'],
+    ['Test and measurement', '/products#category-test-and-measurement-equipment'],
+    ['Household items', '/products#category-household-items'],
+    ['Dry pet food', '/products#category-dry-pet-food'],
   ]],
-  ['Services', [
-    ['Global Product Sourcing', '/services'],
-    ['Import & Export', '/services'],
-    ['Industrial Procurement', '/services'],
-    ['OEM & Private Label', '/services'],
-    ['Supply Chain Solutions', '/services'],
+  ['Online Stores', [
+    ['Amazon', '/#online'],
+    ['Walmart Marketplace', '/#online'],
+    ['eBay', '/#online'],
+    ['TikTok Shop', '/#online'],
+    ['Trading Services', '/services'],
   ]],
 ]
 
@@ -32,7 +35,7 @@ export default function Footer() {
         <div className="f-top">
           <div className="f-brand">
             <Brand showSubtitle={false} />
-            <p>Global Trading &amp; Industrial Supply Solutions You Can Trust. USA-based international sourcing, procurement and worldwide shipment.</p>
+            <p>Machinery, generators, test equipment, general merchandise and online marketplace sales. USA-based sourcing and worldwide shipment.</p>
             <span>
               {ADDRESS}
               <br />

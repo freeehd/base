@@ -114,32 +114,12 @@ h1, h2, h3 {
 }
 
 .kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
-  padding: 5px 14px;
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: 4px;
+  margin-bottom: 12px;
   color: var(--amber-text);
-  font: 700 12.5px var(--font-mono);
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  font: 650 .875rem/1.4 var(--font-sans);
 }
 
-.kicker span {
-  color: var(--amber-deep);
-  font-weight: 800;
-}
-
-.on-dark .kicker {
-  background: rgba(245, 158, 11, 0.12);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #fbbf24;
-}
-
-.on-dark .kicker span {
+.on-dark .kicker, .dark-kicker {
   color: var(--amber);
 }
 
@@ -2125,4 +2105,55 @@ a:focus-visible, button:focus-visible {
   .stats-grid li:first-child {
     border-top: 0;
   }
+}
+
+#online, #faq, #quote, .cat-card[id] {
+  scroll-margin-top: 100px;
+}
+
+.catalog-description {
+  color: var(--mut-l);
+}
+
+.marketplace-tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-inline-start: 20px;
+  margin: 24px 0;
+  list-style: square;
+  color: var(--mut-l);
+}
+
+.marketplace-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 36px);
+  background: var(--mist);
+  border: 1px solid var(--line-l);
+  border-radius: var(--radius);
+}
+
+.marketplace-cta .lead {
+  max-width: 62ch;
+}
+
+.trading-faq details {
+  border-block-end: 1px solid var(--line-l);
+  padding-block: 12px;
+}
+
+.trading-faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding-block: 6px;
+}
+
+.quote-form > small a {
+  color: inherit;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
 }

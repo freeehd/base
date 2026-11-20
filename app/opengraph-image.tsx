@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 
-export const alt = 'The Base Trading — Global Trading & Industrial Supply Solutions'
+export const alt = 'The Base Trading — Worldwide Sourcing, Wholesale & Marketplace Sales'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -41,7 +41,7 @@ export default function OGImage() {
           <div style={{ fontSize: 24, letterSpacing: 5, fontWeight: 700 }}>THE BASE TRADING</div>
         </div>
         <div style={{ position: 'relative', fontSize: 20, color: '#9AA6B0', letterSpacing: 3, textTransform: 'uppercase' }}>
-          MACHINERY · INDUSTRIAL EQUIPMENT · GENERATORS · ELECTRICAL
+          MACHINERY · GENERATORS · TEST EQUIPMENT · MARKETPLACE SALES
         </div>
       </div>
     ),

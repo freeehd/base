@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react'
 import { Check } from 'lucide-react'
 
-export function Kicker({ index, children, dark = false }: { index?: string; children: React.ReactNode; dark?: boolean }) {
-  return <p className={`kicker ${dark ? 'dark-kicker' : ''}`}>{index && <span>[{index}]</span>}{children}</p>
+export function Kicker({ children, dark = false }: { children: React.ReactNode; dark?: boolean; index?: string }) {
+  return <p className={`kicker ${dark ? 'dark-kicker' : ''}`}>{children}</p>
 }
 
 export function LinkButton({ children, ghost = false, href = '/contact' }: { children: React.ReactNode; ghost?: boolean; href?: string }) {

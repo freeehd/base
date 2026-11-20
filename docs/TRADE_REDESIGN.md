@@ -1,0 +1,9 @@
+# Base Trading redesign
+
+Decision: an editorial trade layout with the original charcoal, amber and cool neutral palette, and focused photography. Visual direction and layout are independent: retain the new composition while using the pre-redesign brand colors. The homepage is a decision surface; equipment and wholesale catalog links are distinct and carry their selection forward. Marketplace partnership is a service, not a third inventory category. The other viable direction was an equipment-first brochure with a secondary consumer banner; it would preserve the old emphasis but hide the new wholesale operation.
+
+Keep the existing five URLs, logo asset, product data, marketplace claims, email/telephone details and quote email draft. Do not invent store links. Distinguish illustrative sourcing examples from current availability. Mobile layout and keyboard interactions must work without horizontal overflow; validate catalog filters, context carried into the quote, contact and FAQ. Local delivery only.
+
+Services is a decision surface: replace the flat service index with three jobs (source equipment, buy wholesale, sell a brand online). Every jump link targets the matching section. Product actions retain the catalog group and the partnership action preselects its quote category. Put shipping and the order process after the buyer paths, using the existing charcoal and amber tokens.
+
+The homepage uses a full-width equipment photo and a separate amber navigation strip for the three buyer paths. Avoid repeating a heading-plus-table composition: the sourcing section uses freight photography, marketplaces use a distinct dark band, the order path uses three steps, and the final contact section includes the company link. Optional shared eyebrow text is unboxed and unnumbered; numbering is reserved for actual ordered steps.

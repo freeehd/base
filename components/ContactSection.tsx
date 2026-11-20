@@ -1,84 +1,62 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
-import { Check, Phone, Send } from 'lucide-react'
-import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF, WEB, WEB_HREF } from './site-data'
-import { Kicker, LinkButton } from './ui'
+import type { FormEvent } from 'react'
+import { Mail, MapPin, Phone, Send } from 'lucide-react'
+import { quoteMailto } from '@/lib/quote-mailto.mjs'
+import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF } from './site-data'
+import { LinkButton } from './ui'
+import { quoteCategories } from './trading-content'
 
-export default function ContactSection() {
-  const [submitted, setSubmitted] = useState(false)
-  const [refCode, setRefCode] = useState('')
+export default function ContactSection({ initialCategory }: { initialCategory?: string }) {
+  const selected = quoteCategories.find(category => category === initialCategory) ?? ''
 
   function submitQuote(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    if (!event.currentTarget.checkValidity()) {
-      event.currentTarget.reportValidity()
-      return
-    }
-    setRefCode(`BT-2026-${Math.floor(1000 + Math.random() * 9000)}`)
-    setSubmitted(true)
+    const data = new FormData(event.currentTarget)
+    const field = (name: string) => String(data.get(name) ?? '').trim()
+    window.location.href = quoteMailto(EMAIL, {
+      name: field('full-name'), company: field('company-name'), email: field('email'),
+      phone: field('phone'), category: field('category'), message: field('message'),
+    })
   }
 
   return (
     <section className="contact" id="contact">
       <div className="container">
-        <div className="sec-head reveal">
-          <div>
-            <Kicker index="11">Let's Work Together</Kicker>
-            <h2>Ready to Source Premium Industrial Equipment?</h2>
-          </div>
-          <p className="lead">Our experienced team is ready to help you find reliable products and customized trading solutions.</p>
-        </div>
         <div className="contact-grid">
-          <aside className="c-info reveal">
-            <h3>Contact Us</h3>
-            <p>USA-based · serving industries worldwide</p>
-            <ul>
-              {[['Head Office', ADDRESS], ['Phone', <a key="p" href={PHONE_HREF}>{PHONE_DISPLAY}</a>], ['Email', <a key="e" href={`mailto:${EMAIL}`}>{EMAIL}</a>], ['Web', <a key="w" href={WEB_HREF}>{WEB}</a>]].map(([label, value]) => (
-                <li key={label as string}><Phone size={18} /><div><small>{label as string}</small><span>{value}</span></div></li>
-              ))}
-            </ul>
-            <div className="c-actions">
-              <LinkButton>Request a Quote</LinkButton>
-              <LinkButton ghost href={`mailto:${EMAIL}`}>Contact Sales</LinkButton>
+          <form id="quote" className="quote-form" aria-labelledby="quote-title" onSubmit={submitQuote}>
+            <h3 id="quote-title">Request a Quote</h3>
+            <p>Tell us what you need and we’ll confirm availability.</p>
+            <div className="f-grid">
+              <label>Full Name *<input name="full-name" autoComplete="name" required /></label>
+              <label>Company Name<input name="company-name" autoComplete="organization" /></label>
+              <label>Email *<input name="email" type="email" autoComplete="email" required /></label>
+              <label>Phone<input name="phone" type="tel" autoComplete="tel" /></label>
+              <label className="full">
+                Category *
+                <select name="category" required defaultValue={selected}>
+                  <option value="" disabled>Select a category</option>
+                  {quoteCategories.map(item => <option key={item} value={item}>{item}</option>)}
+                </select>
+              </label>
+              <label className="full">
+                What do you need?
+                <textarea name="message" rows={4} placeholder="Model, quantity, new or used, destination" />
+              </label>
             </div>
+            <button className="btn submit" type="submit">Open email draft <Send size={15} /></button>
+            <small>This opens your email app with the request filled in. You can also write to <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</small>
+          </form>
+          <aside className="c-info">
+            <h3>Prefer to contact us directly?</h3>
+            <p>Our team is based in New York and works with buyers worldwide.</p>
+            <ul>
+              <li><MapPin size={18} aria-hidden="true" /><div><small>Head office</small><span>{ADDRESS}</span></div></li>
+              <li><Phone size={18} aria-hidden="true" /><div><small>Phone</small><a href={PHONE_HREF}>{PHONE_DISPLAY}</a></div></li>
+              <li><Mail size={18} aria-hidden="true" /><div><small>Email</small><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div></li>
+            </ul>
+            <div className="c-actions"><LinkButton ghost href={`mailto:${EMAIL}`}>Email sales</LinkButton></div>
           </aside>
-          <div className="reveal">
-            {submitted ? (
-              <div className="qf-success">
-                <span><Check size={22} /></span>
-                <h4>Request received</h4>
-                <p>Thank you — your sourcing request has been logged. Our team will review the requirements and respond with availability and a formal quotation.</p>
-                <strong>REF: {refCode}</strong>
-              </div>
-            ) : (
-              <form className="quote-form" onSubmit={submitQuote}>
-                <h3>Request a Quote</h3>
-                <p>Tell us what you need — our team will respond with availability and a tailored quotation.</p>
-                <div className="f-grid">
-                  {[['Full Name', 'text', 'Jane Doe'], ['Company Name', 'text', 'Company LLC'], ['Email', 'email', 'you@company.com'], ['Phone', 'tel', '+1 ...']].map(([label, type, placeholder]) => (
-                    <label key={label}>
-                      {label}{label !== 'Company Name' && label !== 'Phone' ? ' *' : ''}
-                      <input name={label.toLowerCase().replace(' ', '-')} type={type} placeholder={placeholder} required={label === 'Full Name' || label === 'Email'} />
-                    </label>
-                  ))}
-                  <label className="full">
-                    Equipment Category *
-                    <select required defaultValue="">
-                      <option value="" disabled>Select equipment category</option>
-                      {['Heavy Construction Equipment', 'Industrial Equipment', 'Spare Parts', 'Generator Sets', 'Industrial Engines', 'Radiators', 'Generator Ends', 'Power Units', 'Marine Engines', 'Other / Multiple'].map((item) => <option key={item}>{item}</option>)}
-                    </select>
-                  </label>
-                  <label className="full">
-                    Message / Requirements *
-                    <textarea required placeholder="Models, quantities, destination port, target timelines..." />
-                  </label>
-                </div>
-                <button className="btn submit" type="submit">Submit Request <Send size={15} /></button>
-                <small>Availability and final specifications are confirmed at the quotation stage.</small>
-              </form>
-            )}
-          </div>
         </div>
       </div>
     </section>

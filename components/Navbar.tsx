@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { navItems, PHONE_DISPLAY, PHONE_HREF, EMAIL } from './site-data'
@@ -10,6 +10,18 @@ export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const menuButton = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!navOpen) return
+    const close = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setNavOpen(false)
+      menuButton.current?.focus()
+    }
+    document.addEventListener('keydown', close)
+    return () => document.removeEventListener('keydown', close)
+  }, [navOpen])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -32,7 +44,7 @@ export default function Navbar() {
       </div>
       <header className={scrolled ? 'scrolled' : ''}>
         <div className="container header-inner">
-          <Brand />
+          <Brand showSubtitle={false} />
           <nav className="main-nav" aria-label="Primary">
             <ul>
               {navItems.map((item) => (
@@ -44,7 +56,7 @@ export default function Navbar() {
           </nav>
           <div className="h-actions">
             <LinkButton>Request a Quote</LinkButton>
-            <button className="burger" aria-label="Toggle navigation" aria-expanded={navOpen} onClick={() => setNavOpen(!navOpen)}>
+            <button ref={menuButton} type="button" className="burger" aria-label="Toggle navigation" aria-expanded={navOpen} onClick={() => setNavOpen(open => !open)}>
               {navOpen ? <X /> : <Menu />}
             </button>
           </div>

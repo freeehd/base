@@ -1,0 +1,45 @@
+.front { position: relative; isolation: isolate; overflow: hidden; background: var(--ink); color: var(--txt); padding: 0; }
+.front > img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 65% 45%; }
+.front::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, #080c11 3%, #080c11ed 29%, #080c1166 68%, #080c111a); }
+.intro { padding-block: clamp(46px, 6vw, 88px); }
+.origin { color: var(--amber); margin: 0 0 14px; font-size: .95rem; font-weight: 600; }
+.front h1 { color: var(--txt); max-width: 13ch; font-size: clamp(2.65rem, 6.4vw, 6rem); line-height: .98; letter-spacing: -.055em; margin: 0 0 22px; text-wrap: balance; }
+.lead { color: var(--txt); max-width: 37ch; margin-bottom: 22px; }
+.routes { background: var(--amber); color: var(--ink); }
+.directory { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.directory a { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr; align-items: start; gap: 3px 12px; padding: 20px clamp(12px, 2.5vw, 32px); min-height: 78px; }
+.directory a:first-child { padding-inline-start: 0; }
+.directory a + a { border-inline-start: 1px solid #0b0f1433; }
+.directory a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.directory a:focus-visible { outline-color: var(--ink); outline-offset: -4px; }
+.directory strong { font-family: var(--font-display); font-size: clamp(1.05rem, 2vw, 1.45rem); line-height: 1.15; }
+.directory small { grid-column: 1 / -1; font-size: .83rem; }
+.coverage,.market,.process,.about { padding-block: clamp(38px, 6.5vw, 88px); }
+.coverageGrid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: center; gap: clamp(24px, 6vw, 80px); }
+.freight { margin: 0; }
+.freight img { width: 100%; aspect-ratio: 1.55; object-fit: cover; background: var(--mist); }
+.sectors { display: flex; flex-wrap: wrap; gap: 7px 17px; margin: 16px 0 22px; }
+.sectors li { border-bottom: 1px solid var(--line-l); padding-bottom: 4px; font-size: .89rem; }
+.market { background: var(--coal); color: var(--txt); }
+.market h2 { color: var(--txt); }
+.market p { color: var(--mut); }
+.marketIntro,.aboutInner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.markets { display: flex; flex-wrap: wrap; gap: 12px clamp(22px, 6vw, 85px); border-top: 1px solid var(--line-d); margin-top: 32px; padding-top: 20px; }
+.markets li { font-family: var(--font-display); font-size: clamp(1.2rem, 2.7vw, 2.4rem); font-weight: 700; line-height: 1.12; }
+.process h2 { max-width: none; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 25px; margin: 26px 0 16px; }
+.steps li { border-top: 2px solid var(--amber); padding-top: 12px; }
+.steps span { color: var(--amber-text); font: 650 .85rem var(--font-mono); }
+.steps h3 { font-size: 1.15rem; margin: 8px 0 6px; }
+.steps p { color: var(--mut-l); margin: 0; }
+.about { background: var(--mist); border-top: 1px solid var(--line-l); }
+@media (max-width: 700px) {
+  .front::after { background: linear-gradient(90deg, #080c11f5, #080c11ba 65%, #080c1170); }
+  .intro { padding-block: 56px; }
+  .directory,.coverageGrid,.steps { grid-template-columns: minmax(0, 1fr); }
+  .directory a { padding: 12px 0; min-height: 62px; }
+  .directory a + a { border-inline-start: 0; border-top: 1px solid #0b0f1433; }
+  .freight { grid-row: 2; }
+  .freight img { aspect-ratio: 2; }
+  .steps { gap: 14px; }
+}

@@ -1,0 +1,35 @@
+.hero { background: var(--ink); color: var(--txt); padding: clamp(32px, 6vw, 82px) 0; }
+.heroGrid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .75fr); gap: clamp(28px, 6vw, 86px); align-items: end; }
+.hero h1 { color: var(--txt); font-size: clamp(2.45rem, 5.25vw, 4.95rem); max-width: 15ch; letter-spacing: -.055em; text-wrap: balance; margin: 14px 0 18px; }
+.hero p { color: var(--mut); max-width: 55ch; }
+.index { border-block: 1px solid var(--line-d); }
+.index a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 13px 4px; min-height: 54px; font-weight: 650; }
+.index a + a { border-top: 1px solid var(--line-d); }
+.index a:hover { color: var(--amber); }
+.number { color: var(--amber-text); font: 600 .78rem var(--font-mono); letter-spacing: .07em; }
+.hero .number { color: var(--amber); }
+.capabilities { padding-block: clamp(20px, 4vw, 56px); background: var(--paper); }
+.capability { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(24px, 7vw, 100px); padding-block: clamp(28px, 5vw, 62px); }
+.capability + .capability { border-top: 1px solid var(--line-l); }
+.capability h2, .logistics h2, .process h2 { font-size: clamp(1.8rem, 3.5vw, 3.3rem); margin: 10px 0 14px; line-height: 1.03; }
+.capability p, .process p { color: var(--mut-l); }
+.capability a { display: inline-flex; align-items: center; min-height: 44px; }
+.deliverables { border-top: 1px solid var(--line-l); }
+.deliverables li { padding: 12px 0; border-bottom: 1px solid var(--line-l); }
+.deliverables h3, .steps h3 { font-size: 1.05rem; margin: 0 0 4px; }
+.deliverables p, .steps p { margin: 0; font-size: .94rem; }
+.markets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.markets li { border: 1px solid var(--line-l); border-radius: 6px; padding: 5px 9px; font-size: .8rem; }
+.logistics { background: var(--coal); color: var(--txt); padding-block: clamp(36px, 6vw, 80px); }
+.logisticsGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); gap: clamp(26px, 6vw, 80px); align-items: center; }
+.logistics h2 { color: var(--txt); }
+.logistics p { color: var(--mut); max-width: 52ch; }
+.logistics img { width: 100%; aspect-ratio: 1.8; object-fit: cover; border-radius: var(--radius); background: var(--panel); }
+.process { background: var(--mist); padding-block: clamp(34px, 6vw, 74px); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; margin-top: 26px; }
+.steps li { border-top: 2px solid var(--amber-deep); padding-top: 12px; }
+.steps span { display: block; margin-bottom: 8px; }
+@media (max-width: 700px) {
+  .heroGrid, .capability, .logisticsGrid, .steps { grid-template-columns: minmax(0, 1fr); }
+  .capability { gap: 16px; }
+}

@@ -4,6 +4,13 @@ import { useMemo, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { inventory, inventoryCategories, stockTabs } from './site-data'
 import { getChipClass, Kicker } from './ui'
+import { quoteHref } from './trading-content'
+
+const quoteCategoryByInventory: Record<string, string> = {
+  gensets: 'Commercial generators',
+  genends: 'Commercial generators',
+  radiators: 'Spare parts and attachments',
+}
 
 export default function Inventory() {
   const [filter, setFilter] = useState('all')
@@ -50,14 +57,14 @@ export default function Inventory() {
               <h2>Equipment We Can Source</h2>
             </div>
           </div>
-          <div className="ftabs" role="tablist">
+          <div className="ftabs" role="group" aria-label="Filter representative inventory">
             {stockTabs.map(([key, label]) => (
-              <button className={filter === key ? 'active' : ''} key={key} onClick={() => setFilter(key)}>{label}</button>
+              <button type="button" aria-pressed={filter === key} className={filter === key ? 'active' : ''} key={key} onClick={() => setFilter(key)}>{label}</button>
             ))}
           </div>
           <div className="stock-list">
             {visibleInventory.map((item) => (
-              <article className="stock-card reveal" key={item.cat}>
+              <article className="stock-card" key={item.cat}>
                 <div className="sc-media">
                   <span>{item.label}</span>
                   <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
@@ -81,7 +88,7 @@ export default function Inventory() {
                     </div>
                   </div>
                   <div className="sc-action">
-                    <a className="btn btn-sm btn-card" href="/contact">Request Quote <ArrowRight size={14} /></a>
+                    <a className="btn btn-sm btn-card" href={quoteHref(quoteCategoryByInventory[item.cat] ?? 'Industrial machines')}>Request Quote <ArrowRight size={14} /></a>
                   </div>
                 </div>
               </article>

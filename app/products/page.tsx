@@ -4,22 +4,25 @@ import Inventory from '@/components/Inventory'
 
 export const metadata: Metadata = {
   title: 'Products',
-  description: 'Heavy construction equipment, industrial equipment, spare parts, generator sets, industrial engines, radiators, generator ends, power units and marine engines — sourced worldwide.',
+  description: 'Browse machinery, industrial machines, commercial generators, test instruments, spare parts, household goods and dry pet food.',
   alternates: { canonical: '/products' },
 }
 
-export default function ProductsPage() {
+export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ group?: string | string[] }> }) {
+  const { group } = await searchParams
+  const initialGroup = group === 'equip' || group === 'goods' ? group : 'all'
   return (
     <main id="main">
       <PageHeader
         kicker="What We Supply"
-        title={<>Premium Machinery &amp; Industrial Equipment, <em>Sourced Worldwide</em></>}
-        lead="From heavy construction machinery to generator sets and spare parts — representative categories and current sourcing examples, confirmed at the quotation stage."
+        title={<>Machinery, Power, Instruments <em>and Everyday Goods</em></>}
+        lead="New and used equipment, bulk everyday goods and representative inventory. Availability is subject to supplier confirmation."
       />
       <ProductsSection
+        initialGroup={initialGroup}
         kicker="02"
-        title="Product Categories"
-        lead="Three core categories covering machinery, industrial equipment and spare parts — each sourced from verified manufacturers worldwide."
+        title="Explore the catalog"
+        lead="Filter by type, then ask for availability. Used equipment is quoted with condition details."
       />
       <SourcingStrip />
       <Inventory />
